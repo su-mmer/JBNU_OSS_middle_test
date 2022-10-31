@@ -1,6 +1,12 @@
 # Program make a simple calculator
 
+# constant
+YES = "YES"
+NO = "NO"
+
 # This function adds two numbers
+
+
 def add(x, y):
     return x + y
 
@@ -28,7 +34,7 @@ print("4.Divide")
 
 while True:
     # take input from the user
-    choice = input("Enter choice(1/2/3): ")
+    choice = input("Enter choice(1/2/3/4): ")
 
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
@@ -48,10 +54,24 @@ while True:
             print(num1, "/", num2, "=", divide(num1, num2))
 
         # check if user wants another calculation
-        # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
-            break
+        # double-check for end when user choose no
+        # the while loop if answer is yes
+        # available all types of yes/no
+        while(True):
+            next_calculation = input(
+                "Let's do next calculation? (yes/no): ").upper()
+            if next_calculation == YES:  # 계산을 계속 할 것이다 처음으로
+                break
+            elif next_calculation == NO:  # 계산을 그만 두겠다
+                checkShutDown = input(  # 재확인
+                    "Are you sure? (yes/no): ").upper()
+                if checkShutDown == YES:  # 계산 최종 그만
+                    exit()
+                elif checkShutDown == NO:  # 계산 더 할거면 처음으로
+                    break
+            else:
+                print("Please answer yes or no.")
+                continue
 
     else:
         print("Invalid Input")
