@@ -53,11 +53,16 @@ while True:
             print(num1, "/", num2, "=", divide(num1, num2))
 
         # check if user wants another calculation
-        # break the while loop if answer is no
+        # double-check for end when user choose no
+        # the while loop if answer is yes
+        # available all types of yes/no
         next_calculation = input(
             "Let's do next calculation? (yes/no): ").upper()
         if next_calculation == NO:
-            break
+            checkShutDown = input(
+                "Are you sure? (yes/no): ").upper()
+            if checkShutDown == YES:
+                break
 
     else:
         print("Invalid Input")
