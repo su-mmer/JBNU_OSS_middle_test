@@ -1,4 +1,5 @@
 # Program make a simple calculator
+
 # constant
 YES = "YES"
 NO = "NO"
@@ -56,13 +57,21 @@ while True:
         # double-check for end when user choose no
         # the while loop if answer is yes
         # available all types of yes/no
-        next_calculation = input(
-            "Let's do next calculation? (yes/no): ").upper()
-        if next_calculation == NO:
-            checkShutDown = input(
-                "Are you sure? (yes/no): ").upper()
-            if checkShutDown == YES:
+        while(True):
+            next_calculation = input(
+                "Let's do next calculation? (yes/no): ").upper()
+            if next_calculation == YES:  # 계산을 계속 할 것이다 처음으로
                 break
+            elif next_calculation == NO:  # 계산을 그만 두겠다
+                checkShutDown = input(  # 재확인
+                    "Are you sure? (yes/no): ").upper()
+                if checkShutDown == YES:  # 계산 최종 그만
+                    exit()
+                elif checkShutDown == NO:  # 계산 더 할거면 처음으로
+                    break
+            else:
+                print("Please answer yes or no.")
+                continue
 
     else:
         print("Invalid Input")
