@@ -50,7 +50,11 @@ while True:
         elif choice == '3':
             print(num1, "*", num2, "=", multiply(num1, num2))
 
+        # can't divide by zero
         elif choice == '4':
+            if num2 == 0:
+                print("warning: You can't divide by zero")
+                continue
             print(num1, "/", num2, "=", divide(num1, num2))
 
         # check if user wants another calculation
