@@ -1,14 +1,31 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
 import logging
 
 
-def get_logger():
-    logger = logging.getLogger()  # ·Î°Å »ı¼º
-    logger.setLevel(logging.DEBUG)  # debug ÀÌ»óÀÇ ÀüºÎ Ãâ·Â
+def getDebugLogger():
+    logger = logging.getLogger("debug")  # "debug"ì´ë¦„ì„ ê°€ì§„ ë¡œê±° ìƒì„±
+    logger.setLevel(logging.DEBUG)  # debug ì´ìƒì˜ ë¡œê·¸ ì „ë¶€ ì¶œë ¥
     formatter = logging.Formatter(
-        "[%(levelname)s] [%(asctime)s] %(message)s", "%Y-%m-%d %H:%M:%S")  # levelname, ½Ã°¢, ¸Ş¼¼Áö Ãâ·Â Æ÷¸Ë
+        "[%(levelname)s] [%(asctime)s] %(message)s", "%Y-%m-%d %H:%M:%S")  # levelname, ì‹œê°, ë©”ì„¸ì§€ ì¶œë ¥ í¬ë§·
 
-    info = logging.FileHandler(filename="info.log")  # Á¤»ó ·Î±× ÀúÀåÇÒ ÆÄÀÏÇÚµé·¯
-    info.setFormatter(formatter)  # Æ÷¸ÅÅÍ ¿¬°á
-    logger.addHandler(info)  # logger¿¡ info ·Î±× ÀúÀå
+    # ê°œë°œì‹œ ì²˜ë¦¬ ê¸°ë¡ì„ ë‚¨ê²¨ì•¼ í•˜ë‹ˆê¹Œ debug
+    debug = logging.FileHandler(filename="debug.log")  # íŒŒì¼ì— ë¡œê·¸ ì €ì¥
+    debug.setFormatter(formatter)  # í¬ë§¤í„° ì—°ê²°
+    logger.addHandler(debug)  # loggerì— debug ë¡œê·¸ ì €ì¥
+
+    return logger
+
+
+def getWarnLogger():
+    logger = logging.getLogger("warn")  # ë¡œê±° ìƒì„±
+
+    formatter = logging.Formatter(
+        "[%(levelname)s] [%(asctime)s] %(message)s", "%Y-%m-%d %H:%M:%S")  # levelname, ì‹œê°, ë©”ì„¸ì§€ ì¶œë ¥ í¬ë§·
+
+    # ì…ë ¥ëœ ì •ë³´ë¥¼ ì²˜ë¦¬í•  ìˆ˜ ìˆìœ¼ë‚˜ ì˜ë„ì¹˜ ì•Šì€ ì •ë³´ê°€ ë“¤ì–´ì™”ì„ ê²½ìš°ë‹ˆê¹Œ warning
+    warn = logging.FileHandler(filename="warn.log")
+    warn.setFormatter(formatter)
+    logger.addHandler(warn)
 
     return logger

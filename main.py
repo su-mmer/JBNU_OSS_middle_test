@@ -1,11 +1,18 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
 # Program make a simple calculator
 import log
 
-logger = log.get_logger()
+debugLogger = log.getDebugLogger()
+warnLogger = log.getWarnLogger()
 
 
-def infoLog(message):
-    logger.info(message)
+def debugLog(message):
+    debugLogger.debug(message)
+
+
+def warnLog(message):
+    warnLogger.warning(message)
 
 
 # constant
@@ -52,29 +59,31 @@ while True:
         if choice == '1':
             result = f'{num1} + {num2} = {add(num1, num2)}'
             print(result)
-            infoLog(result)
+            debugLog(result)
 
         elif choice == '2':
             result = f'{num1} - {num2} = {subtract(num1, num2)}'
             print(result)
-            infoLog(result)
+            debugLog(result)
 
         elif choice == '3':
             result = f'{num1} * {num2} = {multiply(num1, num2)}'
             print(result)
-            infoLog(result)
+            debugLog(result)
 
         # can't divide by zero
         elif choice == '4':
             if num2 == 0:
-                print("warning: You can't divide by zero")
+                message = "warning: You can't divide by zero"
+                print(message)
+                warnLog(message)
                 continue
             result = f'{num1} / {num2} = {divide(num1, num2)}'
             print(result)
-            infoLog(result)
+            debugLog(result)
 
         # check if user wants another calculation
-        # double-check for end when user choose no
+        # double-check for end
         # the while loop if answer is yes
         # available all types of yes/no
         while(True):
@@ -95,3 +104,4 @@ while True:
 
     else:
         print("Invalid Input")
+        warnLog("Invalid Input")
