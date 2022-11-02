@@ -1,4 +1,12 @@
 # Program make a simple calculator
+import log
+
+logger = log.get_logger()
+
+
+def infoLog(message):
+    logger.info(message)
+
 
 # constant
 YES = "YES"
@@ -42,20 +50,28 @@ while True:
         num2 = float(input("Enter second number: "))
 
         if choice == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
+            result = f'{num1} + {num2} = {add(num1, num2)}'
+            print(result)
+            infoLog(result)
 
         elif choice == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
+            result = f'{num1} - {num2} = {subtract(num1, num2)}'
+            print(result)
+            infoLog(result)
 
         elif choice == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
+            result = f'{num1} * {num2} = {multiply(num1, num2)}'
+            print(result)
+            infoLog(result)
 
         # can't divide by zero
         elif choice == '4':
             if num2 == 0:
                 print("warning: You can't divide by zero")
                 continue
-            print(num1, "/", num2, "=", divide(num1, num2))
+            result = f'{num1} / {num2} = {divide(num1, num2)}'
+            print(result)
+            infoLog(result)
 
         # check if user wants another calculation
         # double-check for end when user choose no
