@@ -2,6 +2,7 @@
 # UTF-8 encoding when using korean
 # Program make a simple calculator
 import log
+import calculate
 
 debugLogger = log.getDebugLogger()
 warnLogger = log.getWarnLogger()
@@ -18,27 +19,6 @@ def warnLog(message):
 # constant
 YES = "YES"
 NO = "NO"
-
-# This function adds two numbers
-
-
-def add(x, y):
-    return x + y
-
-
-# This function subtracts two numbers
-def subtract(x, y):
-    return x - y
-
-
-# This function multiplies two numbers
-def multiply(x, y):
-    return x * y
-
-
-# Need to define divide function.
-def divide(x, y):
-    return x / y
 
 
 print("Select operation.")
@@ -57,17 +37,17 @@ while True:
         num2 = float(input("Enter second number: "))
 
         if choice == '1':
-            result = f'{num1} + {num2} = {add(num1, num2)}'
+            result = f'{num1} + {num2} = {calculate.add(num1, num2)}'
             print(result)
             debugLog(result)
 
         elif choice == '2':
-            result = f'{num1} - {num2} = {subtract(num1, num2)}'
+            result = f'{num1} - {num2} = {calculate.subtract(num1, num2)}'
             print(result)
             debugLog(result)
 
         elif choice == '3':
-            result = f'{num1} * {num2} = {multiply(num1, num2)}'
+            result = f'{num1} * {num2} = {calculate.multiply(num1, num2)}'
             print(result)
             debugLog(result)
 
@@ -78,7 +58,7 @@ while True:
                 print(message)
                 warnLog(message)
                 continue
-            result = f'{num1} / {num2} = {divide(num1, num2)}'
+            result = f'{num1} / {num2} = {calculate.divide(num1, num2)}'
             print(result)
             debugLog(result)
 
